@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Photo Album</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+
+<div class="container">        <!-- 全体を囲むコンテナ -->
+
+    <div class="jumbotron"
+         style="color:#FFF; text-shadow: 2px 2px 4px #666;
+            height:230px; background:url(photo/headerpic.jpg); background-size:cover;">
+
+        <span class="h2">IE4A</span>
+        <p style="font-size:16px">画像共有あぷり</p>
+    </div>
+
+    <h1 class="page-header">Albu Name</h1>
+    <button type="button" class="btn btn-default" aria-label="Left Align"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>Download</button>
+    <p></p>
+
+    <!-- サンプル用に仮作成-->
+    <!--　サムネル一覧-->
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+            ドロップダウン
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+            <li role="presentation"><a href=https://www.google.co.jp/>リンクのリスト１</a></li>
+            <li role="presentation"><a href="#">リンクのリスト２</a></li>
+            <li role="presentation"><a href="#">リンクのリスト３</a></li>
+        </ul>
+    </div>
+    <div class="row">
+
+        <div id="links">
+
+            <div class="col-md-3">
+                <a href="photo/pic.jpg" title="Red" data-gallery>
+                    <img src="photo/pic.jpg" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="photo/pic.jpg" title="Red" data-gallery>
+                    <img src="photo/pic.jpg" class="img-responsive">
+                </a>
+            </div>
+
+            <div class="col-md-3">
+                <a href="photo/pic1.jpg" title="Blue" data-gallery>
+                    <img src="photo/pic1.jpg" class="img-responsive">
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>        <!-- 全体を囲むコンテナ -->
+
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="js/jquery.blueimp-gallery.min.js"></script>
+<script src="js/bootstrap-image-gallery.js"></script>
+
+</body>
+</html>
+

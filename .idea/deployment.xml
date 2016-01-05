@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="153.120.167.173">
+    <serverData>
+      <paths name="153.120.167.173">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/lvt/lapp" local="$PROJECT_DIR$" web="/lapp" />
+            <mapping deploy="/var" local="$PROJECT_DIR$/var" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

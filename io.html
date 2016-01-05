@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+        var socket = io('http://welapp.net:2001');
+        //        socket.on('news', function (data) {
+        ////            console.log(data);
+        //            socket.emit('my other event', {my: 'data'});
+        //            $("#data").html(data.hello);
+        //        });
+        socket.on('message:UserLogin', function (message) {
+            console.log(message);
+            $('#data').append('<br>' + message.user);
+        });
+    </script>
+</head>
+<body>
+<h1>Works!</h1>
+
+<div>
+    <span id="data"></span>
+</div>
+</body>
+</html>
