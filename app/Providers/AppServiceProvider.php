@@ -17,13 +17,13 @@ class AppServiceProvider extends ServiceProvider
     {
         //
 
-        Queue::failing(function ($connection, $job, $data) {
-            // Notify team of failing job...
-            $failing = 'Queues failing.' . $connection . $job;
-            Mail::raw($failing, function ($m) {
-                $m->to('zero.lethanh@gmail.com');
-            });
-        });
+//        Queue::failing(function ($connection, $job, $data) {
+//            // Notify team of failing job...
+//            $failing = 'Queues failing.' . $connection . $job;
+//            Mail::raw($failing, function ($m) {
+//                $m->to('zero.lethanh@gmail.com');
+//            });
+//        });
     }
 
     /**

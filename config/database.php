@@ -55,6 +55,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),
+            'port' => 8889,
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
@@ -116,7 +117,7 @@ return [
         'cluster' => false,
 
         'default' => [
-            'host' => '127.0.0.1',
+            'host' => '153.120.167.173',
             'port' => 6379,
             'database' => 0,
             'password' => env('REDIS_PASS')

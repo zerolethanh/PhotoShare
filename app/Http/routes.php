@@ -11,19 +11,29 @@
 |
 */
 
-
-if (!request('mobile') && !request()->isSecure()) {
-//    return response()->redirectTo('https://www.photoshare.space');
-    header("Location: https://www.photoshare.space");
-    exit;
-
+//force redirect to secure page
+if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
+    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+    exit();
 }
 
-$host = request()->header('host');
-if ($host == 'www.welapp.net' || $host == 'welapp.net' || $host == 'photoshare.space') {
-    header("Location: http://www.photoshare.space");
-    exit;
-}
+//dd(request()->isSecure());
+//if (env('APP_ENV') != 'local') {
+//
+//    if (!request('mobile') && !request()->isSecure()) {
+////        return redirect()->secure('/');
+//        echo __FUNCTION__ . 'app is server';
+//        header("Location: https://www.photoshare.space");
+//        exit;
+//    }
+//
+//    $host = request()->header('host');
+//    if ($host == 'www.welapp.net' || $host == 'welapp.net' || $host == 'photoshare.space') {
+//        header("Location: https://www.photoshare.space");
+//        exit;
+//    }
+//}
+
 
 DB::connection()->enableQueryLog();
 

@@ -7,7 +7,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 
 use App\Events\UserLogin;
 use App\Listeners\SendEmail;
-use App\Events\MyEvent;
+//use App\Events\MyEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -20,9 +20,9 @@ class EventServiceProvider extends ServiceProvider
         UserLogin::class => [
             SendEmail::class
         ],
-        MyEvent::class => [
-            SendEmail::class
-        ]
+//        MyEvent::class => [
+//            SendEmail::class
+//        ]
     ];
 
     /**
