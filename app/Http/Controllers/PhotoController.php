@@ -44,7 +44,7 @@ class PhotoController extends Controller
         }
         $deleted = $photo->delete();
 
-//        event(new PhotoDeleted($photo->event));
+        event(new PhotoDeleted($photo->event));
         return compact('deleted', 'photo', 'event');
     }
 
@@ -157,7 +157,7 @@ class PhotoController extends Controller
             DB::commit();
 
 
-//            event((new PhotoAdded($event, $this->user)));
+            event((new PhotoAdded($event, $this->user)));
 
             return ['files' => isset($photos) ? $photos : []];
 

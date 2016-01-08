@@ -370,7 +370,7 @@ class EventController extends Controller
             'pub_at' => Carbon::now(),
             'event_id' => $event->id
         ]);
-//        event(new NewComment($comment, $event));
+        event(new NewComment($comment, $event));
         return $comment;
     }
 

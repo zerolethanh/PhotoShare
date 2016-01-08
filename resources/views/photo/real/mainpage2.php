@@ -193,9 +193,17 @@
 <br><br>
 
 <footer class="footer">
-    <div class="container pull-left">
-        <p class="text-muted"><a href="/progress"">@2015 - IE4A2班 -卒制</a></p>
+    <div class="row">
+        <p class="col-sm-4 col-sm-offset-1"><a href="/progress"">@2015 - IE4A2班 -卒制</a></p>
+        <p class="col-sm-offset-4 col-sm-3"><a href="https://github.com/zerolethanh/PhotoShare"">Open Source Code on GitHub</a></p>
     </div>
+
+<!--    <div class="container pull-left">-->
+<!--        <p class="text-muted"><a href="/progress"">@2015 - IE4A2班 -卒制</a></p>-->
+<!--    </div>-->
+<!--    <div class="container pull-right">-->
+<!--        <p class="text-muted"><a href="https://github.com/zerolethanh/PhotoShare"">OPEN SOURCE CODE ON GITHUB</a></p>-->
+<!--    </div>-->
 </footer>
 
 
