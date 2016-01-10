@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="/js/jqFileUploads/css/jquery.fileupload-ui-noscript.css">
     </noscript>
 
-    <link href="//code.welapp.net/css/christmas_button.css" rel="stylesheet">
+    <link href="//photoshare.space/css/christmas_button.css" rel="stylesheet">
 
 </head>
 <body>
@@ -222,24 +222,25 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- blueimp Gallery script -->
 <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+
 <!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
-<script src="/js/jqFileUploads/js/jquery.iframe-transport.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.iframe-transport.js"></script>
 <!-- The basic File Upload plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload.js"></script>
 <!-- The File Upload processing plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-process.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-process.js"></script>
 <!-- The File Upload image preview & resize plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-image.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-image.js"></script>
 <!-- The File Upload audio preview plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-audio.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-audio.js"></script>
 <!-- The File Upload video preview plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-video.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-video.js"></script>
 <!-- The File Upload validation plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-validate.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-validate.js"></script>
 <!-- The File Upload user interface plugin -->
-<script src="/js/jqFileUploads/js/jquery.fileupload-ui.js"></script>
+<script src="/js/jqFileUploads/js/build/js/jquery.fileupload-ui.js"></script>
 <!-- The main application script -->
-<script src="/js/jqFileUploads/js/main.js"></script>
+<script src="/js/jqFileUploads/js/build/js/main.js"></script>
 <!-- The XDomainRequest Transport is included for cross-domain file deletion for IE 8 and IE 9 -->
 <!--[if (gte IE 8)&(lt IE 10)]>
 <script src="/js/jqFileUploads/js/cors/jquery.xdr-transport.js"></script>
