@@ -336,7 +336,10 @@ class EventController extends Controller
 
         $newEventData = array_merge(
             $request->only($this->eventNameKey, $this->allDayKey, $this->orTimeKey, $this->startTimeKey, $this->endTimeKey),
-            ['created_by' => $this->user->id]
+            [
+                'created_by' => $this->user->id,
+                'uuid' => Uuid::uuid()
+            ]
         );
         $event = $this->user
             ->events()
@@ -487,35 +490,51 @@ class EventController extends Controller
 
     public function anyJoin(Request $request, $shared_id)
     {
-        try {
-            $event_id = Crypt::decrypt($shared_id);
 
-            $event = Event::findOrFail($event_id);
+        if (strlen($shared_id) == 36) {
 
-            if ($this->user->events()->find($event_id)) {
-
-                if ($this->isMobile) {
-                    return ['joined' => true, 'event' => $event];
-                }
-                return redirect("/event/$event_id/photo");
-
-            } else {
-
-                $this->user->events()->attach($event_id, ['admin' => 0]);
-
-                if ($this->isMobile) {
-                    return ['joined' => true, 'event' => $event];
-                }
-
-                return redirect("/event/$event_id/photo");
-
+            $event = Event::where('uuid', $shared_id)->first();
+            if (!$event) {
+                return ['joined' => false, 'note' => "$shared_id not valid"];
             }
+            $event_id = $event->id;
 
-        } catch (DecryptException $e) {
-            return 'not shared id valid';
+
+        } else {
+
+            // or Crypted $event_id
+            try {
+                $event_id = Crypt::decrypt($shared_id);
+
+                $event = Event::findOrFail($event_id);
+
+
+            } catch (DecryptException $e) {
+                return 'not shared id valid';
+            }
         }
 
-        return redirect("/event");
+        $isMobile = $request->has('mobile');
+
+        if ($this->user->events()->find($event_id)) {
+
+            if ($isMobile) {
+                return ['joined' => true, 'event' => $event];
+            }
+            return redirect("/event/$event_id/photo");
+
+        } else {
+
+            $this->user->events()->attach($event_id, ['admin' => 0]);
+
+            if ($isMobile) {
+                return ['joined' => true, 'event' => $event];
+            }
+
+            return redirect("/event/$event_id/photo");
+
+        }
+
     }
 
     public function postEdit(Request $request, $event_id)

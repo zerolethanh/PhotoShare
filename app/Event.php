@@ -16,6 +16,7 @@ class Event extends Model
     protected $guarded = ['id', 'created_at'];
     protected $table = 'events';
     protected $dates = ['or_time'];
+
 //    protected $casts = [
 //        'members' => 'array'
 //    ];
@@ -169,6 +170,15 @@ class Event extends Model
     public function eventGroupBy()
     {
         return $this->hasMany(EventGroupBy::class);
+    }
+
+    public function getUuidAttribute($uuid)
+    {
+        //if event.user_id == request user id then show uuid
+        if ($this->user_id == request()->user()->id) {
+            return $uuid;
+        }
+        return null;
     }
 
 }

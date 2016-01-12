@@ -46,6 +46,17 @@ class AuthController extends Controller
         $this->mailer = $mailer;
     }
 
+    public function authenticated(Request $request, $user)
+    {
+
+        if ($request->has('mobile')) {
+            $user['X-CSRF-TOKEN'] = csrf_token();
+            return compact('user');
+        }
+        return redirect('/event');
+
+    }
+
 
 //Auth::user()->update(['last_auth' => Carbon::now()]);
 

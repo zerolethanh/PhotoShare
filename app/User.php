@@ -222,7 +222,11 @@ class User extends Model implements AuthenticatableContract,
     public function qrSaveEvent($event)
     {
         $fullPath = $this->qrEventsPath($event);
-        $eventJoinPath = url("/events/join/$event->shared_id");
+        if ($event->uuid) {
+            $eventJoinPath = url("/events/join/$event->uuid");
+        } else {
+            $eventJoinPath = url("/events/join/$event->shared_id");
+        }
         return $this->qrSave($eventJoinPath, $fullPath);
     }
 

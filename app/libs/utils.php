@@ -232,7 +232,7 @@ class utils
         return $me->update($attributes);
     }
 
-    public static function  maxserial()
+    public static function maxserial()
     {
         return self::me('maxserial');
     }
@@ -646,5 +646,12 @@ https://www.amadellas.com/bank-invoice
     public static function enTrans($path, $params = [], $domain = 'messages')
     {
         return trans($path, $params, $domain, 'en');
+    }
+
+    public static function isValidUuid($uuid)
+    {
+
+        return preg_match('/^[0-9A-F]{8}-[0-9A-F]{4}-4[0-9A-F]{3}-[89AB][0-9A-F]{3}-[0-9A-F]{12}$/i', $uuid);
+
     }
 }
