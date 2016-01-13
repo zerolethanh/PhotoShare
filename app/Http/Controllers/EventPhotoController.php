@@ -62,12 +62,12 @@ class EventPhotoController extends Controller
 
     public function show(Request $request, $eventId, $photoId)
     {
-//        $photo = $this->user->events()
-//            ->findOrFail($eventId)
-//            ->photos()
-//            ->findOrFail($photoId);
+        $photo = $this->user->events()
+            ->findOrFail($eventId)
+            ->photos()
+            ->findOrFail($photoId);
 
-        $photo = Photo::findOrFail($photoId);
+//        $photo = Photo::findOrFail($photoId);
         if ($photo) {
             if ($request->thumb) {
                 if ($this->isThumbExists($photo)) {
