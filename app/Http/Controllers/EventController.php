@@ -343,7 +343,7 @@ class EventController extends Controller
         );
         $event = $this->user
             ->events()
-            ->create($newEventData);
+            ->create($newEventData, ['joined_at' => date('Y-m-d H:i:s')]);
 
         if ($event) {
             $event->fill(['shared_id' => Crypt::encrypt($event->id), 'user_id' => $this->user->id])->save();
@@ -488,17 +488,26 @@ class EventController extends Controller
         }
     }
 
-    public function anyJoin(Request $request, $shared_id)
+    public function anyJoin(Request $request, $shared_id = null)
     {
 
+        //既に参加したイベント(参加者, mobileのみ)
+        if ($event_id = request('event_id')) {
+
+            $event = $request->user()->events()->find($event_id);
+
+            return ['joined' => true, 'event' => $event];
+
+        }
+
+        //uuid または crypted id で参加する (自分)
         if (strlen($shared_id) == 36) {
 
             $event = Event::where('uuid', $shared_id)->first();
             if (!$event) {
-                return ['joined' => false, 'note' => "$shared_id not valid"];
+                return ['joined' => false, 'note' => "イベントが見つかりません。"];
             }
             $event_id = $event->id;
-
 
         } else {
 
@@ -510,30 +519,25 @@ class EventController extends Controller
 
 
             } catch (DecryptException $e) {
-                return 'not shared id valid';
+                return ['joined' => false, 'note' => "イベントが見つかりません。"];
             }
         }
 
         $isMobile = $request->has('mobile');
 
-        if ($this->user->events()->find($event_id)) {
-
-            if ($isMobile) {
-                return ['joined' => true, 'event' => $event];
-            }
-            return redirect("/event/$event_id/photo");
+        //既に参加した場合
+        if ($this->user->events()->where(['events.id' => $event_id])->exists()) {
 
         } else {
-
-            $this->user->events()->attach($event_id, ['admin' => 0]);
-
-            if ($isMobile) {
-                return ['joined' => true, 'event' => $event];
-            }
-
-            return redirect("/event/$event_id/photo");
-
+            //これから参加する場合
+            $this->user->events()->attach($event_id, ['admin' => 0, 'joined_at' => date('Y-m-d H:i:s')]);
         }
+
+        if ($isMobile) {
+            return ['joined' => true, 'event' => $event];
+        }
+        return redirect("/event/$event_id/photo");
+
 
     }
 
