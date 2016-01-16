@@ -403,7 +403,7 @@ class PhotoController extends Controller
     {
 //        /slir/h100/65/2/356_mori.JPG
         $slirPath = $this->slirPath($photo);
-        copy("http://153.120.167.173/slir/h100/$slirPath", $this->photoThumbFullPath($photo));
+        copy("http://153.120.167.173/slir/h200/$slirPath", $this->photoThumbFullPath($photo));
 
 //        header("Content-Type: $photo->mime");
 //        list($width, $height) = getimagesize($filename);

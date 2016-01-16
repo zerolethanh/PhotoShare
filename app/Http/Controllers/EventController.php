@@ -212,7 +212,7 @@ class EventController extends Controller
 
                         $html .=
                             "<a href='$link' title='{$photo['ori_name']}'>
-                        <img src='$link?thumb=1' class='img img-rounded' style='margin-top: 5px;'/>
+                        <img src='$link?thumb=1' class='img img-rounded' style='margin-top: 5px;' height='100'/>
                     </a>";
                     }
 
@@ -236,7 +236,7 @@ class EventController extends Controller
                     $link = "/event/{$this->event->id}/photo/{$photo->id}";
                     $html .=
                         "<a href='$link' title='{$photo['ori_name']}'>
-                        <img src='$link?thumb=1' class='img img-rounded' style='margin-top: 5px;'/>
+                        <img src='$link?thumb=1' class='img img-rounded' style='margin-top: 5px;' height='100'/>
                     </a>";
 
                 }
@@ -604,7 +604,17 @@ class EventController extends Controller
 
     public function allEvents()
     {
-        return $this->user->events()->orderBy('created_at', 'desc')->get();
+        $events = $this->user->events()
+            ->orderBy('created_at', 'desc')->get();
+
+//        if (request()->user()->id == 9) {
+        $events->load(['user' => function ($userQ) {
+            $userQ->select('id', 'name');
+        }]);
+//        }
+
+        return $events;
+
     }
 
     public function sharedEvents()

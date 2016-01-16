@@ -40,6 +40,11 @@ class Event extends Model
         return $this->photos()->findOrFail($photoId);
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
     public function allUsers()
     {
         return $this->belongsToMany(User::class, 'user_event', 'event_id', 'user_id');

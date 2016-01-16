@@ -18,7 +18,7 @@ class Photo extends Model
         'id' => 'int'
     ];
     protected $dates = ['updated_at', 'created_at'];
-    protected $appends = ['title'];
+    protected $appends = ['title', 'link', 'link_thumb'];
 
 //    protected $dateFormat = 'U';
     public function user()
@@ -49,6 +49,16 @@ class Photo extends Model
     public function getTitleAttribute()
     {
         return $this->ori_name ?: $this->name;
+    }
+
+    public function getLinkAttribute()
+    {
+        return url("event/$this->event_id/photo/$this->id");
+    }
+
+    public function getLinkThumbAttribute()
+    {
+        return $this->getLinkAttribute() . "/?thumb=1";
     }
 
 }
