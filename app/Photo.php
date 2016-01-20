@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -18,7 +19,7 @@ class Photo extends Model
         'id' => 'int'
     ];
     protected $dates = ['updated_at', 'created_at'];
-    protected $appends = ['title', 'link', 'link_thumb'];
+    protected $appends = ['title', 'link', 'link_thumb', 'created_at_ja'];
 
 //    protected $dateFormat = 'U';
     public function user()
@@ -59,6 +60,15 @@ class Photo extends Model
     public function getLinkThumbAttribute()
     {
         return $this->getLinkAttribute() . "/?thumb=1";
+    }
+
+    public function getCreatedAtJaAttribute()
+    {
+        $created_at = $this->created_at;
+        if ($created_at instanceof Carbon) {
+            $created_at = $created_at->format('Y年m月d日 H時i分');
+        }
+        return $created_at;
     }
 
 }

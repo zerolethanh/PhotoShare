@@ -56,7 +56,7 @@
                                     {{--<button class="button" type="submit">ログイン</button>--}}
 
                                     <button type="submit" class="btn btn-success">ログイン</button>
-                                    <a class="btn btn-link" href="/password/email">パスワード忘た？</a>
+                                    <a class="btn btn-link" href="/password/email">パスワード忘れた場合はこちら</a>
                                 </div>
 
                             </div>

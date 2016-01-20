@@ -32,21 +32,25 @@ class PhotoController extends Controller
 
     public function postDelete(Request $request, $photo_id)
     {
-        $photo = Photo::with('event')->findOrFail($photo_id);
-//        $event = Event::findOrFail($photo->event_id);
 
-//        $deleted = false;
-//        return Auth::id();
-//        return $photo;
-
-        if ($photo->user_id != Auth::id()) {
+        $deleted = false;
+        $photo = Photo::findOrFail($photo_id);
+        if ($photo->user_id != $request->user()->id) {
             $msg = '写真所有者ではないため削除出来ません。';
             return compact('deleted', 'msg');
         }
         $deleted = $photo->delete();
-
+        $photo->load('event');
         event(new PhotoDeleted($photo->event));
-        return compact('deleted', 'photo', 'event');
+        if ($request->has('mobile')) {
+            $photos = (new EventController())->anyPhotos($request, $photo->event_id);
+            if (isset($photos["photos"]["all"])) {
+                $photos = $photos["photos"]["all"];
+            }
+            return compact('deleted', 'photos');
+        } else {
+            return compact('deleted', 'photo', 'event');
+        }
     }
 
 //    GET /photos/upload/$event_id

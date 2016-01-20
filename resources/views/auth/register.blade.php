@@ -6,7 +6,9 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading bg text-center" style="color: white">新規登録</div>
-                    <div class="panel-body" style="background-image: url(/imgs/bg-strip-dark.png)">
+                    <div class="panel-body"
+                         {{--style="background-image: url(/imgs/bg-strip-dark.png)"--}}
+                    >
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <strong>Whoops!</strong> エラー発生.<br><br>
@@ -58,7 +60,7 @@
                                     {{--<button type="submit" class="btn btn-primary">--}}
                                     {{--登録する--}}
                                     {{--</button>--}}
-                                    <button class="button" type="submit">登録する</button>
+                                    <button class="btn btn-primary" type="submit">登録する</button>
                                 </div>
                             </div>
                         </form>
