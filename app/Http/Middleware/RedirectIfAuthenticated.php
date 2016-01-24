@@ -36,7 +36,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            if ($request->mobile) {
+            //認証済み
+            /*
+             * mobile ? return JSON : return redirect /event
+             */
+            if ($request->has('mobile')) {
                 $user = $request->user();
                 $user['X-CSRF-TOKEN'] = csrf_token();
                 return compact('user');
@@ -44,6 +48,7 @@ class RedirectIfAuthenticated
             return redirect('/event');
         }
 
+        //未認証, next
         return $next($request);
     }
 }

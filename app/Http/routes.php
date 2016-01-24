@@ -10,32 +10,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-//force redirect to secure page
 if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
     header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     exit();
 }
 
-//dd(request()->isSecure());
-//if (env('APP_ENV') != 'local') {
-//
-//    if (!request('mobile') && !request()->isSecure()) {
-////        return redirect()->secure('/');
-//        echo __FUNCTION__ . 'app is server';
-//        header("Location: https://www.photoshare.space");
-//        exit;
-//    }
-//
-//    $host = request()->header('host');
-//    if ($host == 'www.welapp.net' || $host == 'welapp.net' || $host == 'photoshare.space') {
-//        header("Location: https://www.photoshare.space");
-//        exit;
-//    }
-//}
-
 
 DB::connection()->enableQueryLog();
+
+Route::resource('photo', 'PhotoController');
+Route::resource('event', 'EventController');
+Route::resource('event.photo', 'EventPhotoController');
+Route::resource('event.tag', 'EventTagController');
 
 Route::any('allEvents', ['uses' => 'EventController@allEvents']);
 Route::any('events', ['uses' => 'EventController@allEvents']);
@@ -44,12 +30,9 @@ Route::any('adminEvents', 'EventController@adminEvents');
 Route::any('sharedEvents', 'EventController@sharedEvents');
 
 Route::resource('user.event', 'UserEventController');
-Route::resource('photo', 'PhotoController');
-Route::resource('event', 'EventController');
-Route::resource('event.photo', 'EventPhotoController');
-Route::resource('event.tag', 'EventTagController');
-Route::resource('vue', 'VueController');
-Route::controller('vue', 'VueController');
+
+//Route::resource('vue', 'VueController');
+//Route::controller('vue', 'VueController');
 Route::controller('photos', 'PhotoController', [
     'getUpload' => 'photos.upload'
 ]);
@@ -97,6 +80,6 @@ Route::any('progress', function () {
     return view('progress');
 });
 
-get('gettoken', function () {
+Route::get('gettoken', function () {
     return ['X-CSRF-TOKEN' => csrf_token()];
 });

@@ -349,7 +349,7 @@ class EventController extends Controller
             $event->fill(['shared_id' => Crypt::encrypt($event->id), 'user_id' => $this->user->id])->save();
             $this->user->qrSaveEvent($event);
 
-            if ($this->isMobile) {
+            if ($request->has('mobile')) {
                 return $event;
             }
             return redirect('/photos/upload/' . $event->id);
