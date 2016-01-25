@@ -47,35 +47,21 @@ class AuthController extends Controller
         $this->mailer = $mailer;
     }
 
-    public function postLogin(Request $request)
+    //when login success
+    public function authenticated(Request $request, $user)
     {
-        $this->validate($request, [
-            $this->loginUsername() => 'required', 'password' => 'required',
-        ]);
 
-
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        $throttles = $this->isUsingThrottlesLoginsTrait();
-
-        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
-            return $this->sendLockoutResponse($request);
+        if ($request->has('mobile')) {
+            $user['X-CSRF-TOKEN'] = csrf_token();
+            return compact('user');
         }
+        return redirect('/event');
 
-        $credentials = $this->getCredentials($request);
+    }
 
-        if (Auth::attempt($credentials, $request->has('remember'))) {
-            return $this->handleUserWasAuthenticated($request, $throttles);
-        }
-
-        // If the login attempt was unsuccessful we will increment the number of attempts
-        // to login and redirect the user back to the login form. Of course, when this
-        // user surpasses their maximum number of attempts they will get locked out.
-        if ($throttles) {
-            $this->incrementLoginAttempts($request);
-        }
-
+    //when login failed
+    function sendFailedLoginResponse(Request $request)
+    {
         //send login failed email
         if ($email = $request->input('email')) {
             dispatch(new LoginFailedEmail($email));
@@ -89,26 +75,14 @@ class AuthController extends Controller
             ];
         }
 
-        return redirect($this->loginPath())
+        return redirect()->back()
             ->withInput($request->only($this->loginUsername(), 'remember'))
             ->withErrors([
                 $this->loginUsername() => $this->getFailedLoginMessage(),
             ]);
-    }
-
-    public function authenticated(Request $request, $user)
-    {
-
-        if ($request->has('mobile')) {
-            $user['X-CSRF-TOKEN'] = csrf_token();
-            return compact('user');
-        }
-        return redirect('/event');
 
     }
 
-
-//Auth::user()->update(['last_auth' => Carbon::now()]);
 
     /**
      * Get a validator for an incoming registration request.
