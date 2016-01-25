@@ -3,13 +3,13 @@
 namespace App\Jobs;
 
 use App\Jobs\Job;
-use Illuminate\Contracts\Bus\SelfHandling;
+//use Illuminate\Contracts\Bus\SelfHandling;//removed from 5.2
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailer;
 use Illuminate\Mail\Message;
 
 
-class LoginFailedEmail extends Job implements SelfHandling, ShouldQueue
+class LoginFailedEmail extends Job implements ShouldQueue
 {
     /**
      * Create a new job instance.
