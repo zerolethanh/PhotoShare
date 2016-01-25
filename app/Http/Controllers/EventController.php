@@ -334,12 +334,21 @@ class EventController extends Controller
     {
         $this->validate($request, [$this->eventNameKey => 'required']);
 
+        $dbdata = $request->only(
+            $this->eventNameKey, $this->allDayKey, $this->orTimeKey, $this->startTimeKey, $this->endTimeKey, 'platform');
+
+        if (!isset($dbdata['platform'])) {
+            if ($request->has('mobile')) {
+                $platform = 'mobile';
+
+            } else {
+                $platform = 'web';
+            }
+
+            $dbdata['platform'] = $platform;
+        }
         $newEventData = array_merge(
-            $request->only($this->eventNameKey, $this->allDayKey, $this->orTimeKey, $this->startTimeKey, $this->endTimeKey),
-            [
-                'created_by' => $this->user->id,
-                'uuid' => Uuid::uuid()
-            ]
+            $dbdata, ['created_by' => $this->user->id, 'uuid' => Uuid::uuid()]
         );
         $event = $this->user
             ->events()

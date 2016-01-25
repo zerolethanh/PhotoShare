@@ -81,6 +81,7 @@ class AuthController extends Controller
             dispatch(new LoginFailedEmail($email));
         }
 
+        // if login via mobile then return JSON
         if ($request->has('mobile')) {
             return [
                 'login' => false,
