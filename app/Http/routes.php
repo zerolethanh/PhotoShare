@@ -83,3 +83,8 @@ Route::any('progress', function () {
 Route::get('gettoken', function () {
     return ['X-CSRF-TOKEN' => csrf_token()];
 });
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
+});
