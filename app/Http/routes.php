@@ -17,6 +17,7 @@ if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
 
 
 DB::connection()->enableQueryLog();
+
 Route::group(['middleware' => 'web'], function () {
     Route::resource('photo', 'PhotoController');
     Route::resource('event', 'EventController');
@@ -31,11 +32,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::resource('user.event', 'UserEventController');
 
-//Route::resource('vue', 'VueController');
-//Route::controller('vue', 'VueController');
     Route::controller('photos', 'PhotoController', [
         'getUpload' => 'photos.upload'
     ]);
+
     Route::controller('user', 'UserController');
     Route::controller('events', 'EventController', [
         'anyAdmin' => 'events.admin',
@@ -45,7 +45,8 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::any('/', ['uses' => 'htmlController@index']);
     Route::any('/home', ['uses' => 'htmlController@home']);
-//Route::any('/pusher', ['uses' => 'htmlController@pusher']);
+
+
     Route::controller('t', 'tController');
 
     Route::any('user', ['uses' => 'UserController@getInfo']);
@@ -61,7 +62,6 @@ Route::group(['middleware' => 'web'], function () {
          * use:  angularController@index
          */
         Route::controller('show', 'assetsController');
-//    Route::controller('resources', 'assetsController');
     });
     Route::group(['domain' => '{sub}.welapp.net'], function () {
         /* angular js , css assets
@@ -86,5 +86,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
+    Route::get('_tokendic', function () {
+        $_token = csrf_token();
+        return compact('_token');
+    });
+//    Route::get('/home', 'HomeController@index');
 });

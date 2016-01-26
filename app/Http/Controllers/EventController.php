@@ -715,7 +715,7 @@ class EventController extends Controller
     {
         $this->validate($request, ['event_name' => 'required']);
 
-        $search_text = trim($request->event_name);
+        $search_text = trim($request->input('event_name'));
 
         if (starts_with($search_text, '#')) {
             $tag = substr($search_text, 1);
@@ -726,9 +726,13 @@ class EventController extends Controller
             $events = $this->user->events()
                 ->where('event_name', 'like', "%{$search_text}%")->get();
         }
-        $html = view('html.eventSearchResult', compact('events', 'search_text'));
 
-        return $html;
+        if ($request->has('mobile')) {
+            return compact('events', 'search_text');
+        } else {
+            $html = view('html.eventSearchResult', compact('events', 'search_text'));
+            return $html;
+        }
     }
 
 }

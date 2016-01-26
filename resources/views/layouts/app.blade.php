@@ -18,11 +18,18 @@
     <style>
         body {
             font-family: 'Lato';
+
+            background: url(/imgs/fuyu.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
         }
 
         .fa-btn {
             margin-right: 6px;
         }
+
     </style>
 </head>
 <body id="app-layout">
