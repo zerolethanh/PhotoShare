@@ -383,6 +383,7 @@ class EventController extends Controller
             'event_id' => $event->id
         ]);
         event(new NewComment($comment, $event));
+        return compact('event', 'comment');
         return $comment;
     }
 

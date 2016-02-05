@@ -30,6 +30,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::any('adminEvents', 'EventController@adminEvents');
     Route::any('sharedEvents', 'EventController@sharedEvents');
 
+
     Route::resource('user.event', 'UserEventController');
 
     Route::controller('photos', 'PhotoController', [
@@ -90,5 +91,7 @@ Route::group(['middleware' => 'web'], function () {
         $_token = csrf_token();
         return compact('_token');
     });
+
+    Route::get('material',['use'=>'']);
 //    Route::get('/home', 'HomeController@index');
 });

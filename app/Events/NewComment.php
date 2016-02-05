@@ -8,6 +8,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
+//use App\Event;
+
 class NewComment extends Event implements ShouldBroadcast
 {
     use SerializesModels;
@@ -35,6 +37,17 @@ class NewComment extends Event implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['has_new_comment'];
+        return ['has_new_comment'];//redis
+//        return ['album'];
     }
+
+    /**
+     * Get the broadcast event name.
+     *
+     * @return string
+     */
+//    public function broadcastAs()
+//    {
+//        return 'has_new_comment';
+//    }
 }

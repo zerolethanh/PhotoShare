@@ -179,10 +179,16 @@ class Event extends Model
 
     public function getUuidAttribute($uuid)
     {
-        //if event.user_id == request user id then show uuid
-        if ($this->user_id == request()->user()->id) {
-            return $uuid;
+        if (!isset($uuid)) {
+            return null;
         }
+        //if event.user_id == request user id then show uuid
+        if (isset($this->user_id) && isset(request()->user()->id)) {
+            if ($this->user_id == request()->user()->id) {
+                return $uuid;
+            }
+        }
+
         return null;
     }
 

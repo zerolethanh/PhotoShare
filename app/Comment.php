@@ -26,6 +26,10 @@ class Comment extends Model
 
     public function getPubAtAttribute($pub_at)
     {
-        return Carbon::parse($pub_at)->format('Y年m月d日 H:h:i');
+        try {
+            return Carbon::parse($pub_at)->format('Y年m月d日 H:h:i');
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 }

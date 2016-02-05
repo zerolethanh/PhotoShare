@@ -15,11 +15,11 @@
     <link href="/css/photoshare.css" rel="stylesheet">
     <link href="/js/ajaxcombo/jquery.ajax-combobox.css" rel="stylesheet">
 
-
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <link rel="stylesheet" href="/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="/css/bootstrap-image-gallery.min.css">
     <style>
@@ -216,6 +216,7 @@
 
 <!--socket io チャット notification (more:photoshare-control.js)-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.min.js"></script>
+<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 <!--<script src="/js/moment.js"></script>-->
 <script src="/js/moment-with-locales.min.js"></script>
 <script src="/js/ajaxcombo/jquery.ajax-combobox.js"></script>
