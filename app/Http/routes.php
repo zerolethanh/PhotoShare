@@ -15,7 +15,6 @@ if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
     exit();
 }
 
-
 DB::connection()->enableQueryLog();
 
 Route::group(['middleware' => 'web'], function () {
@@ -92,6 +91,5 @@ Route::group(['middleware' => 'web'], function () {
         return compact('_token');
     });
 
-    Route::get('material',['use'=>'']);
-//    Route::get('/home', 'HomeController@index');
+//    Route::get('material',['use'=>'']);
 });
