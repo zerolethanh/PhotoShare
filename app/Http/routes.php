@@ -58,20 +58,19 @@ Route::group(['middleware' => 'web'], function () {
 
 //sub domain for angular assets
 //    Route::group(['domain' => 'assets.welapp.net'], function () {
-        /* angular js , css assets
-         * use:  angularController@index
-         */
+    /* angular js , css assets
+     * use:  angularController@index
+     */
 //        Route::controller('show', 'assetsController');
 //    });
 //    Route::group(['domain' => '{sub}.welapp.net'], function () {
-        /* angular js , css assets
-         * use:  angularController@index
-         */
+    /* angular js , css assets
+     * use:  angularController@index
+     */
 //        Route::any('lib/angular/{p1?}/{p2?}/{p3?}/{p4?}/{p5?}/{p6?}/{p7?}', ['uses' => 'angularController@index']);
 //    });
 //    Route::controller('angular', 'angularController');
 //    Route::controller('assets', 'assetsController');
-
 
 
     Route::auth();
@@ -90,5 +89,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('gettoken', function () {
         return ['X-CSRF-TOKEN' => csrf_token()];
     });
+
+
+    Route::controller('policies', 'PolicyController');
 
 });
