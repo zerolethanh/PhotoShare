@@ -68,7 +68,18 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <a href="{{url('policies/privacy')}}"></a>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <a href="{{url('policies/terms')}}"></a>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-4">
+                                    <button type="submit" class="btn btn-success">
                                         <i class="fa fa-btn fa-user"></i>{{trans('register.Register')}}
                                     </button>
                                 </div>
