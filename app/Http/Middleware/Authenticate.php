@@ -36,7 +36,7 @@ class Authenticate
     {
         if ($this->auth->guest()) {
             if ($request->has('mobile')) {
-                return ['auth' => false, 'errs' => 'no valid auth'];
+                return ['auth' => false, 'errs' => 'invalid auth'];
             }
             if ($request->ajax()) {
                 return response('Unauthorized.', 401);
