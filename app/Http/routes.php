@@ -91,5 +91,11 @@ Route::group(['middleware' => 'web'], function () {
         return ['X-CSRF-TOKEN' => csrf_token()];
     });
 
-//    Route::get('material',['use'=>'']);
+    Route::auth();
+
+    Route::get('_tokendic', function () {
+        $_token = csrf_token();
+        return compact('_token');
+    });
+
 });
