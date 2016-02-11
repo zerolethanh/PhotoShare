@@ -10,5 +10,5 @@ return [
     'E-Mail Address' => 'メールアドレス',
     'Password' => 'パスワード',
     'Confirm Password' => 'パスワード確認',
-    'Register' => '新規登録'
+    'Register' => 'PhotoShareに登録(上記に同意)'
 ];

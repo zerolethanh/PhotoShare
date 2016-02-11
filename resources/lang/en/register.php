@@ -10,5 +10,5 @@ return [
     'E-Mail Address' => 'E-Mail Address',
     'Password' => 'Password',
     'Confirm Password' => 'Confirm Password',
-    'Register' => 'Register'
+    'Register' => 'I agree PhotoShare Privacy and Terms above and Register'
 ];
