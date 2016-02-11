@@ -6,7 +6,7 @@
  * Time: 1:43
  */
 
-@extends('layouts.app')
+@extends('layouts.policies')
 
 @section('content')
     <div class="container">
