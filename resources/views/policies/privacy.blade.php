@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: ZE
- * Date: 2016/02/12
- * Time: 1:43
- */
-
 @extends('layouts.policies')
 
 @section('content')
