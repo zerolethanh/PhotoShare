@@ -68,7 +68,7 @@
 
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <a href="{{url('policies/terms')}}">利用規約</a><a href="{{url('policies/privacy')}}">プライバシーポリシー</a>をご確認ください。
+                                    <a href="{{url('policies/terms')}}">利用規約</a>・<a href="{{url('policies/privacy')}}">プライバシーポリシー</a>をご確認ください。
                                 </div>
                             </div>
                             <div class="form-group">
