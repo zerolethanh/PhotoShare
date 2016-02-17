@@ -36,8 +36,8 @@ class AuthController extends Controller
      *
      * @return void
      */
-    protected $redirectPath = '/event';
-    protected $redirectTo = '/event';
+    protected $redirectPath = '/';
+    protected $redirectTo = '/';
 
     protected $mailer;
 
