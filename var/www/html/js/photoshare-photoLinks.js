@@ -45,7 +45,7 @@ function getPhotos(event_id, group_by) {
             getComments(data.event.id);
 
             //var targetY = $("#eventsDropDownMenu").offset().top - 10;
-            $("html,body").animate({scrollTop: 0});
+            //$("html,body").animate({scrollTop: 0});
         })
         .fail(function () {
             location.href = "/"

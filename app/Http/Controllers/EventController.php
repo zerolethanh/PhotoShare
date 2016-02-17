@@ -39,6 +39,8 @@ class EventController extends Controller
     protected $control;
     protected $eventGroupBy;//for $this->buttons();
 
+    protected $users;
+
     public function __construct()
     {
         parent::__construct();
@@ -165,27 +167,6 @@ class EventController extends Controller
         return compact('users', 'by', 'links', 'ids', 'can_be_deleted', 'all');
     }
 
-    protected $users;
-
-//    public function photos_links()
-//    {
-//        $html = '<div id="links" class="links">';
-//
-//        foreach ($this->photos as $photo) {
-//            $id = $photo['id'];
-//            $link = "/event/{$this->event->id}/photo/{$id}";
-//
-//            $html .= "<a href='$link' title='{$photo->ori_name}'>
-//                            <img src='$link?thumb=1' class='img img-thumbnail'/>
-//                      </a>";
-//        }
-//
-//        $html .= "</div>";
-//
-//        $html .= view('html.galleryctl');
-//
-//        return $html;
-//    }
 
 
     function photoHTML()
