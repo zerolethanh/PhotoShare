@@ -58,15 +58,16 @@ class AuthController extends Controller
             return compact('user');
         }
 
-        //if web
-        $lastEvent = $user->allAdminEvents()->orderBy('id', 'desc')->first();
-
-        if ($lastEvent) {
-//            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
-            return (new EventPhotoController())->index($request, $lastEvent->id);
-        } else {
-            return redirect('/photos/create');
-        }
+//        //if web
+        return redirect()->route('web_home');
+//        $lastEvent = $user->allAdminEvents()->orderBy('id', 'desc')->first();
+//
+//        if ($lastEvent) {
+////            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
+//            return (new EventPhotoController())->index($request, $lastEvent->id);
+//        } else {
+//            return redirect('/photos/create');
+//        }
 
 //        return redirect('/event');
 

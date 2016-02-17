@@ -43,7 +43,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     Route::controller('comments', 'CommentController');
 
-    Route::any('/', ['uses' => 'htmlController@index']);
+    Route::any('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
 
 //    Route::any('user', ['uses' => 'UserController@getInfo']);
 

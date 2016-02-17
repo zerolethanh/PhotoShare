@@ -18,7 +18,17 @@ class htmlController extends Controller
 
     public function index(Request $request)
     {
-        if (!$request->user()) {
+        if ($request->user()) {
+            //if web
+            $lastEvent = $request->user()->allAdminEvents()->orderBy('id', 'desc')->first();
+
+            if ($lastEvent) {
+//            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
+                return (new EventPhotoController())->index($request, $lastEvent->id);
+            } else {
+                return redirect('/photos/create');
+            }
+        } else {
             return redirect('login');
         }
 
