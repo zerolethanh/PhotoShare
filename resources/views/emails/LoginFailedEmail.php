@@ -12,7 +12,7 @@ echo
     <br>
     If you forgot your password, please reset via link below:
     <br>
-    https://photoshare.space/password/email
+    https://photoshare.space/password/reset
     <br>
     <br>
     PhotoShare Team.
