@@ -35,16 +35,9 @@ class PhotoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-//    public function index(Request $request)
-//    {
-//        $this->validate($request, ['gid' => 'required|integer']);
-
-//        $links = $this->user->photoGroup($request->gid)->lateOrder()->lists('id')->map(function ($val) {
-//            return "/photo/$val";
-//        });
-//        return view('photo.show', compact('links'));
-
-//    }
+    public function index(Request $request)
+    {
+    }
 
     public function postDelete(Request $request, $photo_id)
     {
@@ -186,7 +179,6 @@ class PhotoController extends Controller
         $request_all = $request->all();
         return compact('request_all');
     }
-
 
 
     /**
