@@ -18,12 +18,13 @@ class htmlController extends Controller
 
     public function index(Request $request)
     {
-        return redirect('auth/login');
+//        return redirect('auth/login');
     }
 
     public function home()
     {
-        return view('welcome');
+//        return view('welcome');
+
     }
 
     public function pusher()
