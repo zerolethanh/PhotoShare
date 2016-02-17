@@ -13,24 +13,28 @@ class htmlController extends Controller
     public function __construct()
     {
         parent::__construct();
-//        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     public function index(Request $request)
     {
-        if ($request->user()) {
-            //if web
-            $lastEvent = $request->user()->allAdminEvents()->orderBy('id', 'desc')->first();
 
-            if ($lastEvent) {
-//            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
-                return (new EventPhotoController())->index($request, $lastEvent->id);
-            } else {
-                return redirect('/photos/create');
-            }
+//        if ($request->user()) {
+        //if logged in
+        //if is mobile, see AuthController@authenticated
+        //if is web
+        $lastEvent = $request->user()->allAdminEvents()->orderBy('id', 'desc')->first();
+
+        if ($lastEvent) {
+            return (new EventPhotoController())->index($request, $lastEvent->id);
         } else {
-            return redirect('login');
+            return redirect('/photos/create');
         }
+//        }
+//        else {
+//            //else go to log in form
+//            return redirect('login');
+//        }
 
     }
 
