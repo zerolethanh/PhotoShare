@@ -59,8 +59,8 @@ class AuthController extends Controller
         }
 
 //        //if web
-//        return redirect()->route('web_home');
-        return redirect('/');
+
+        return redirect()->route('web_home');//redirect to /
 //        $lastEvent = $user->allAdminEvents()->orderBy('id', 'desc')->first();
 //
 //        if ($lastEvent) {

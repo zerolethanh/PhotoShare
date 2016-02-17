@@ -18,6 +18,9 @@ if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
 DB::connection()->enableQueryLog();
 
 Route::group(['middleware' => 'web'], function () {
+
+    Route::any('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+
     Route::resource('photo', 'PhotoController');
     Route::resource('event', 'EventController');
     Route::resource('event.photo', 'EventPhotoController');
@@ -43,7 +46,7 @@ Route::group(['middleware' => 'web'], function () {
     ]);
     Route::controller('comments', 'CommentController');
 
-    Route::any('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+
 
 //    Route::any('user', ['uses' => 'UserController@getInfo']);
 
