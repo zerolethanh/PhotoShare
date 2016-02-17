@@ -7,7 +7,7 @@
  */
 echo
     "You are login failed at " . date('Y-m-d H:i:s') .
-//    "<br>IPAddress: " . request()->ip() .
+    "<br>IPAddress: " . implode(',', request()->getClientIps()) .
     "<br>This email is sent automatically,so please do not reply this email.
     <br>
     If you forgot your password, please reset via link below:
