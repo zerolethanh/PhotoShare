@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\EventPhotoController;
 use App\Http\Controllers\PhotoController;
 use App\User;
 use Faker\Provider\Uuid;
@@ -51,11 +52,23 @@ class AuthController extends Controller
     public function authenticated(Request $request, $user)
     {
 
+        //if mobile
         if ($request->has('mobile')) {
             $user['X-CSRF-TOKEN'] = csrf_token();
             return compact('user');
         }
-        return redirect('/event');
+
+        //if web
+        $lastEvent = Auth::user()->allAdminEvents()->orderBy('id', 'desc')->first();
+
+        if ($lastEvent) {
+//            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
+            return (new EventPhotoController())->index($request, $lastEvent->id);
+        } else {
+            return redirect('/photos/create');
+        }
+
+//        return redirect('/event');
 
     }
 
@@ -71,7 +84,7 @@ class AuthController extends Controller
         if ($request->has('mobile')) {
             return [
                 'login' => false,
-                'errs' => 'no email and password record match'
+                'errs' => 'Emailまたはパスワードが間違っています。'
             ];
         }
 

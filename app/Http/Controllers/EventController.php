@@ -53,6 +53,27 @@ class EventController extends Controller
     }
 
     /*
+    * route: /event
+    */
+    public function index()
+    {
+        return $this->getByself();
+    }
+
+    /*
+     * route: /events/byself
+     */
+    public function getByself()
+    {
+        $lastEvent = $this->user->allAdminEvents()->orderBy('id', 'desc')->first();
+
+        if ($lastEvent) {
+            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
+        }
+        return redirect('/photos/create');
+    }
+
+    /*
      * GET POST /events/photos/$event_id
      */
     public function anyPhotos(Request $request, $event_id)
@@ -399,19 +420,6 @@ class EventController extends Controller
 
 
     /*
-     * route: /events/byself
-     */
-    public function getByself()
-    {
-        $lastEvent = $this->user->allAdminEvents()->orderBy('id', 'desc')->first();
-
-        if ($lastEvent) {
-            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
-        }
-        return redirect('/photos/create');
-    }
-
-    /*
     * route: /events/byshared
     */
     public function getByshared()
@@ -624,13 +632,7 @@ class EventController extends Controller
         return compact('query', 'events');
     }
 
-    /*
-     * route: /event
-     */
-    public function index()
-    {
-        return $this->getByself();
-    }
+
 
 //    public function getPhotos(Request $request, $term, $identifier)
 //    {
