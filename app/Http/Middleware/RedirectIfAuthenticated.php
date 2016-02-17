@@ -46,9 +46,6 @@ class RedirectIfAuthenticated
                 return compact('user');
             }
             return redirect('/event');
-        } else {
-            header('Location: https://photoshare.space/login');
-            exit();
         }
 
         //未認証, next
