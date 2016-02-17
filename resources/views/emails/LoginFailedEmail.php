@@ -16,4 +16,4 @@ echo
     <br>
     <br>
     PhotoShare Team.
-";upda
+";
