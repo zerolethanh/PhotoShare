@@ -59,18 +59,7 @@ class AuthController extends Controller
         }
 
 //        //if web
-
         return redirect()->route('web_home');//redirect to /
-//        $lastEvent = $user->allAdminEvents()->orderBy('id', 'desc')->first();
-//
-//        if ($lastEvent) {
-////            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
-//            return (new EventPhotoController())->index($request, $lastEvent->id);
-//        } else {
-//            return redirect('/photos/create');
-//        }
-
-//        return redirect('/event');
 
     }
 
