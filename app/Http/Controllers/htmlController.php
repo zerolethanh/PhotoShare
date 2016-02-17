@@ -19,7 +19,7 @@ class htmlController extends Controller
     public function index(Request $request)
     {
         if (!$request->user()) {
-            return redirect('auth/login');
+            return redirect('login');
         }
 
     }
