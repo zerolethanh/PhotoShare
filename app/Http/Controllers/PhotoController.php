@@ -37,6 +37,7 @@ class PhotoController extends Controller
      */
     public function index(Request $request)
     {
+        //please dont delete me
     }
 
     public function postDelete(Request $request, $photo_id)
