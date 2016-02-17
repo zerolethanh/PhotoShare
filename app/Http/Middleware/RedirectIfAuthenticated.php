@@ -45,7 +45,7 @@ class RedirectIfAuthenticated
                 $user['X-CSRF-TOKEN'] = csrf_token();
                 return compact('user');
             }
-            return redirect('/event');
+            return redirect()->route('web_home');
         }
 
         //未認証, next
