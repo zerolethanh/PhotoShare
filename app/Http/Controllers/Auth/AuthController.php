@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function __construct(Mailer $mailer)
     {
         parent::__construct();
-        $this->middleware('guest', ['except' => ['getLogout', 'anyLogIn']]);
+        $this->middleware('guest', ['except' => ['getLogout', 'anyLogIn', 'getLogin']]);
         $this->mailer = $mailer;
     }
 
@@ -59,7 +59,7 @@ class AuthController extends Controller
         }
 
         //if web
-        $lastEvent = Auth::user()->allAdminEvents()->orderBy('id', 'desc')->first();
+        $lastEvent = $user->allAdminEvents()->orderBy('id', 'desc')->first();
 
         if ($lastEvent) {
 //            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
