@@ -9,7 +9,7 @@ var getPhotosData;
 function getPhotos(event_id, group_by) {
 
     event_id = event_id || getEventId();
-    //group_by = group_by || 'All';
+
     var group_by_params = group_by ? "?group_by=" + group_by : "";
     $.post('/events/photos/' + event_id + group_by_params)
         .success(function (data) {//return html
