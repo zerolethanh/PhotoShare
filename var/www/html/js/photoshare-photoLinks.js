@@ -65,65 +65,13 @@ function setupBlueImp() {
 
     var ids = getPhotosData.photoHTML.ids;
 
-    //console.log(ids);
     for (var i = 0; i < ids.length; i++) {
-
-        //console.log(ids[i]);
-
-        document.getElementById(ids[i]).onclick = function (event) {
-            event = event || window.event;
-
-            var can_be_delete_trues = photos.can_be_deleted.true,
-                photo;
-
-            var target = event.target || event.srcElement,
-                link = target.src ? target.parentNode : target,
-                options = {
-                    index: link,
-                    event: event,
-                    toggleControlsOnReturn: false,
-                    continuous: false,
-                    carousel: false,
-                    onslide: function (index, slide) {
-                        $('[name="photo_description"]').fadeTo('fast', 0);
-
-                    },
-                    onslideend: function (index, slide) {
-
-                        photo = photos.all[index];
-                        //$('[name="photo_title"]').text(data.event.event_name);
-                        $('[name="photo_description"]').html(
-                            "<div style='font-size:x-small'>"
-                            + photo.title
-                            + "<br>by " + photo.user.name
-                            + " at " + moment(photo.created_at).fromNow()
-                            + "</div>"
-                        ).fadeTo('fast', 1);
-
-
-                        if (can_be_delete_trues.indexOf(photos.ids[index]) >= 0) {
-                            //delete button show
-                            //console.log('can be deleted');
-                            $('[name="photo_delete_button"]').attr('disabled', false);
-                        } else {
-                            //hide photo delete button
-                            //console.log('can not be deleted');
-                            $('[name="photo_delete_button"]').attr('disabled', true);
-                        }
-
-                        setPhotoIndex(index);
-                    }
-                },
-                links = this.getElementsByTagName('a');
-
-            //console.log(link);
-            gallery = blueimp.Gallery(links, options);
-        };
+        initBlueimp(ids[i]);
     }
 }
-function initBlueimp() {
+function initBlueimp(id) {
 
-    document.getElementById('links').onclick = function (event) {
+    document.getElementById(id /*'links'*/).onclick = function (event) {
         event = event || window.event;
 
         var can_be_delete_trues = photos.can_be_deleted.true,
@@ -165,8 +113,13 @@ function initBlueimp() {
                     }
 
                     setPhotoIndex(index);
+                },
+                onclosed: function () {
+                    getPhotos();
                 }
+
             },
+
             links = this.getElementsByTagName('a');
 
         //console.log(link);

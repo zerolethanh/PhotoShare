@@ -44,9 +44,8 @@ Route::group(['middleware' => 'web'], function () {
     Route::controller('comments', 'CommentController');
 
     Route::any('/', ['uses' => 'htmlController@index']);
-    Route::any('/home', ['uses' => 'htmlController@home']);
 
-    Route::any('user', ['uses' => 'UserController@getInfo']);
+//    Route::any('user', ['uses' => 'UserController@getInfo']);
 
 
     Route::controller('auth', 'Auth\AuthController');
