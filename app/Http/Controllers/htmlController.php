@@ -13,7 +13,7 @@ class htmlController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->middleware('guest');
+//        $this->middleware('guest');
     }
 
     public function index(Request $request)
