@@ -46,6 +46,8 @@ class RedirectIfAuthenticated
                 return compact('user');
             }
             return redirect('/event');
+        } else {
+            return redirect('login');
         }
 
         //未認証, next
