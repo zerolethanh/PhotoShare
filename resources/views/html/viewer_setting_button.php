@@ -6,11 +6,11 @@
  * Time: 15:48
  */
 if ($control) {
-    $html = "<br><button class='btn btn-warning glyphicon glyphicon-resize-small'
-onclick='blueimp_gallery_controls_toggle()'>&nbsp;Small-PhotoViewer</button>";
+    $html = "<br><button class='btn btn-sm btn-primary glyphicon glyphicon-resize-small'
+onclick='blueimp_gallery_controls_toggle()'>&nbsp;Small Photo Viewer</button>";
 } else {
-    $html = "<br><button class='btn btn-warning glyphicon glyphicon-resize-full'
-onclick='blueimp_gallery_controls_toggle()'>&nbsp;Full-PhotoViewer</button>";
+    $html = "<br><button class='btn btn-sm btn-primary glyphicon glyphicon-resize-full'
+onclick='blueimp_gallery_controls_toggle()'>&nbsp;Large Photo Viewer</button>";
 }
 
 echo $html;

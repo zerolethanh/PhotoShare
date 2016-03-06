@@ -33,7 +33,7 @@
         <link rel="stylesheet" href="/js/jqFileUploads/css/jquery.fileupload-ui-noscript.css">
     </noscript>
 
-    <link href="//photoshare.space/css/christmas_button.css" rel="stylesheet">
+    <link href="/css/christmas_button.css" rel="stylesheet">
 
 </head>
 <body>

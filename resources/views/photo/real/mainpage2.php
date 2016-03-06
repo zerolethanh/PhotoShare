@@ -10,7 +10,7 @@
     <meta name="event_id" content="<?= $event->id; ?>">
     <meta name="photo_index" content="">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet">-->
     <link href="/css/christmas_button.css" rel="stylesheet">
     <link href="/css/photoshare.css" rel="stylesheet">
     <link href="/js/ajaxcombo/jquery.ajax-combobox.css" rel="stylesheet">
