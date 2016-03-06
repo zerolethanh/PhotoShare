@@ -5,7 +5,7 @@
 getPhotos();
 
 var getPhotosData;
-
+var gallery;
 function getPhotos(event_id, group_by) {
 
     event_id = event_id || getEventId();
@@ -20,6 +20,8 @@ function getPhotos(event_id, group_by) {
 
             //$('#photos_links').html(data.html.photos_links).append(data.blueimp_gallery);
             $('#photos_links').html(data.photoHTML.links).append(data.blueimp_gallery);
+            setupBlueImp(data.photoHTML.ids);
+
 
             $('#buttons').html(data.html.buttons);
 
@@ -27,25 +29,22 @@ function getPhotos(event_id, group_by) {
             $('#other_albums').html(data.html.other_albums);
             $('#members').html('Members: ' + data.event.members);
 
-            var menuButtonHtml = "<span style='font-size: xx-small' class='text-muted'>"
-                + data.event.or_time + '</span>'
-                + " <span style='font-size: larger;font-weight: bolder'>"
-                + data.event.event_name
-                + '</span> <span class="caret"></span>';
+            var menuButtonHtml =
+                "<span style='font-size: xx-small' class='text-muted'>" + data.event.or_time + '</span>'
+                + " <span style='font-size: larger;font-weight: bolder'>" + data.event.event_name + '</span> '
+                + '<span class="caret"></span>';
             $("#eventsDropDownMenu").html(menuButtonHtml);
 
-            document.title = data.event.event_name + " - PhotoShare";
+            document.title = data.event.event_name;
             focusSelfOrSharedButton(data.event.pivot.admin);
 
             //initBlueimp();
 
-            setupBlueImp();
 
             setEventId(data.event.id);
             getComments(data.event.id);
 
-            //var targetY = $("#eventsDropDownMenu").offset().top - 10;
-            //$("html,body").animate({scrollTop: 0});
+            $("html,body").animate({scrollTop: 0});
         })
         .fail(function () {
             location.href = "/"
@@ -61,9 +60,9 @@ function setPhotoIndex($newIndex) {
 
 moment.locale('ja');
 
-function setupBlueImp() {
+function setupBlueImp(ids) {
 
-    var ids = getPhotosData.photoHTML.ids;
+    ids = ids || getPhotosData.photoHTML.ids;
 
     for (var i = 0; i < ids.length; i++) {
         initBlueimp(ids[i]);
@@ -97,7 +96,7 @@ function initBlueimp(id) {
                         "<div style='font-size:x-small'>"
                         + photo.title
                         + "<br>by " + photo.user.name
-                        + " at " + moment(photo.created_at).fromNow()
+                        + " | " + moment(photo.created_at).fromNow()
                         + "</div>"
                     ).fadeTo('fast', 1);
 
@@ -115,7 +114,11 @@ function initBlueimp(id) {
                     setPhotoIndex(index);
                 },
                 onclosed: function () {
-                    getPhotos();
+
+                    //if (typeof window.albumPhotosChanged !== 'undefined' && window.albumPhotosChanged) {
+                    //    getPhotos();
+                    //    window.albumPhotosChanged = false;
+                    //}
                 }
 
             },

@@ -28,6 +28,11 @@
             max-height: 300px;
             overflow-x: hidden;
         }
+
+        body {
+            /* modal closed not show scroll bar 解決方法 */
+            overflow-y: scroll !important;
+        }
     </style>
 </head>
 
