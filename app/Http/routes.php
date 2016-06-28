@@ -10,6 +10,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+if (request()->is('benritool')) {
+    return response('benritool');
+}
 if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
     header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
     exit();
@@ -45,7 +48,6 @@ Route::group(['middleware' => 'web'], function () {
         'anyShared' => 'events.shared'
     ]);
     Route::controller('comments', 'CommentController');
-
 
 
 //    Route::any('user', ['uses' => 'UserController@getInfo']);
