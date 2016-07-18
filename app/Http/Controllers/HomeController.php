@@ -26,4 +26,26 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function tokendic()
+    {
+        $_token = csrf_token();
+        return compact('_token');
+    }
+
+    public function token()
+    {
+        return csrf_token();
+
+    }
+
+    public function progress()
+    {
+        return view('progress');
+    }
+
+    public function gettoken()
+    {
+        return ['X-CSRF-TOKEN' => csrf_token()];
+    }
 }

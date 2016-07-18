@@ -10,70 +10,63 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-if (request()->is('benritool')) {
-    return response('benritool');
-}
-if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
-    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-    exit();
-}
 
-DB::connection()->enableQueryLog();
+//dd($_SERVER['SERVER_PORT']);
+//if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
+//    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
+//    exit();
+//}
 
-Route::group(['middleware' => 'web'], function () {
+//DB::connection()->enableQueryLog();
 
-    Route::any('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+//Route::group(['middleware' => 'web'], function () {
 
-    Route::resource('photo', 'PhotoController');
-    Route::resource('event', 'EventController');
-    Route::resource('event.photo', 'EventPhotoController');
-    Route::resource('event.tag', 'EventTagController');
+//    Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+Route::auth();
 
-    Route::any('allEvents', ['uses' => 'EventController@allEvents']);
-    Route::any('events', ['uses' => 'EventController@allEvents']);
-
-    Route::any('adminEvents', 'EventController@adminEvents');
-    Route::any('sharedEvents', 'EventController@sharedEvents');
+Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
 
 
-    Route::resource('user.event', 'UserEventController');
+Route::resource('photo', 'PhotoController');
+Route::resource('event', 'EventController');
+Route::resource('event.photo', 'EventPhotoController');
+Route::resource('event.tag', 'EventTagController');
 
-    Route::controller('photos', 'PhotoController', [
-        'getUpload' => 'photos.upload'
-    ]);
+Route::any('allEvents', ['uses' => 'EventController@allEvents']);
+Route::any('events', ['uses' => 'EventController@allEvents']);
 
-    Route::controller('user', 'UserController');
-    Route::controller('events', 'EventController', [
-        'anyAdmin' => 'events.admin',
-        'anyShared' => 'events.shared'
-    ]);
-    Route::controller('comments', 'CommentController');
+Route::any('adminEvents', 'EventController@adminEvents');
+Route::any('sharedEvents', 'EventController@sharedEvents');
 
 
-//    Route::any('user', ['uses' => 'UserController@getInfo']);
+Route::resource('user.event', 'UserEventController');
+
+Route::controller('photos', 'PhotoController', [
+    'getUpload' => 'photos.upload'
+]);
+
+Route::controller('user', 'UserController');
+Route::controller('events', 'EventController', [
+    'anyAdmin' => 'events.admin',
+    'anyShared' => 'events.shared'
+]);
+Route::controller('comments', 'CommentController');
+
+Route::controller('auth', 'Auth\AuthController');
+Route::controller('password', 'Auth\PasswordController');
 
 
-    Route::controller('auth', 'Auth\AuthController');
-    Route::controller('password', 'Auth\PasswordController');
+Route::get('_tokendic', ['uses' => 'HomeController@tokendic']);
 
-    Route::auth();
+Route::any('token', ['uses' => 'HomeController@tokendic']);
 
-    Route::get('_tokendic', function () {
-        $_token = csrf_token();
-        return compact('_token');
-    });
-    Route::any('token', function () {
-        return csrf_token();
-    });
-    Route::get('progress', function () {
-        return view('progress');
-    });
+Route::get('progress', ['uses' => 'HomeController@progress']);
 
-    Route::get('gettoken', function () {
-        return ['X-CSRF-TOKEN' => csrf_token()];
-    });
+Route::get('gettoken', ['uses' => 'HomeController@gettoken']);
 
+Route::controller('policies', 'PolicyController');
 
-    Route::controller('policies', 'PolicyController');
+//Route::group(['middleware' => 'web'], function () {
 
-});
+Route::get('home', 'HomeController@index');
+//});

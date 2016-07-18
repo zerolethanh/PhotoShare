@@ -16,12 +16,12 @@ abstract class Controller extends BaseController
 
 //    public $isDebug;
 
-    public function __construct()
-    {
+//    public function __construct()
+//    {
 //        $this->isMobile = request()->has('mobile');
 
 //        $debug = request('d', false);
 //        $this->isDebug =
 //            $debug && (request()->user()->id == 9);
-    }
+//    }
 }

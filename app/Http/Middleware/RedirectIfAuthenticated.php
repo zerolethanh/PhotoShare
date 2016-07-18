@@ -35,6 +35,7 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
+
         if ($this->auth->check()) {
             //認証済み
             /*

@@ -43,8 +43,9 @@ class AuthController extends Controller
 
     public function __construct(Mailer $mailer)
     {
-        parent::__construct();
-        $this->middleware('guest', ['except' => ['getLogout', 'anyLogIn']]);
+
+        $this->middleware('guest');
+
         $this->mailer = $mailer;
     }
 

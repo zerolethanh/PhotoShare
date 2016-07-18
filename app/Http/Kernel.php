@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'photo' => \App\Http\Middleware\PhotoMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'homepage' => \App\Http\Middleware\ToHomepageMiddleware::class
     ];
 }
