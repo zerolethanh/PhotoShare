@@ -1,31 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-//dd($_SERVER['SERVER_PORT']);
-//if (isset($_SERVER['SERVER_PORT']) && ($_SERVER['SERVER_PORT'] != '443')) {
-//    header('Location: https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
-//    exit();
-//}
-
-//DB::connection()->enableQueryLog();
-
-//Route::group(['middleware' => 'web'], function () {
-
-//    Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
 Route::auth();
 
-Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
+Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
 
+//Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
 
 Route::resource('photo', 'PhotoController');
 Route::resource('event', 'EventController');
@@ -70,3 +49,5 @@ Route::controller('policies', 'PolicyController');
 
 Route::get('home', 'HomeController@index');
 //});
+Route::get('feedback', 'FeedbackController@index');
+Route::post('feedback', 'FeedbackController@store');
