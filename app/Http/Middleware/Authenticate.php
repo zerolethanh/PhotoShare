@@ -34,9 +34,7 @@ class Authenticate
      */
     public function handle($request, Closure $next)
     {
-        if ($request->is('logout') || $request->is('auth/logout')) {
-            return $next($request);
-        }
+
         if ($this->auth->guest()) {
             if ($request->has('mobile')) {
                 return ['auth' => false, 'errs' => 'invalid auth'];

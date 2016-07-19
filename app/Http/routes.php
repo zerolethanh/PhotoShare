@@ -2,9 +2,9 @@
 
 Route::auth();
 
-Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+//Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
 
-//Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
+Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
 
 Route::resource('photo', 'PhotoController');
 Route::resource('event', 'EventController');
@@ -51,3 +51,6 @@ Route::get('home', 'HomeController@index');
 //});
 Route::get('feedback', 'FeedbackController@index');
 Route::post('feedback', 'FeedbackController@store');
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

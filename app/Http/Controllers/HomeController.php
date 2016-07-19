@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -25,27 +25,5 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    }
-
-    public function tokendic()
-    {
-        $_token = csrf_token();
-        return compact('_token');
-    }
-
-    public function token()
-    {
-        return csrf_token();
-
-    }
-
-    public function progress()
-    {
-        return view('progress');
-    }
-
-    public function gettoken()
-    {
-        return ['X-CSRF-TOKEN' => csrf_token()];
     }
 }

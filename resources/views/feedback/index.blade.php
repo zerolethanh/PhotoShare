@@ -12,31 +12,39 @@
                 <ul class="Links">
 
                 </ul>
+
+
                 @if(isset($feedbacks))
+
                     @foreach($feedbacks as $feedback)
 
 
                         <li class="list-group-item">
-
-
-                            <a href="#" class=" left">
+                            <a href="#">
                                 {{str_limit($feedback->you_want,100)}}
                             </a>
 
-                            <small>
-                                {{$feedback->updated_at->diffForHumans()}}
-
-                            </small>
+                            <span class="pull-right">
+                                <small>
+                                    {{$feedback->updated_at->diffForHumans()}}
+                                </small>
+                            </span>
                             <br>
-                            <span>
 
+                            <span>
                                 {{$feedback->your_suggestion}}
                             </span>
                         </li>
 
                     @endforeach
                 @else
-                    No feedbacks yet.
+
+                    Please give us a feedback. <br>
+                    Thanks for.
+                    <br>
+                    PhotoShare Team.
+
+
                 @endif
 
 

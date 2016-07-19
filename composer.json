@@ -21,7 +21,8 @@
         "symfony/psr-http-message-bridge": "0.2",
 
         "symfony/dom-crawler": "~3.0",
-        "symfony/css-selector": "~3.0"
+        "symfony/css-selector": "~3.0",
+        "laravel/homestead": "^3.0"
     },
     "autoload": {
         "classmap": [

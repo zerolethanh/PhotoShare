@@ -36,9 +36,10 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
 
-        if ($request->is('logout')) {
+        if ($request->is('logout') || $request->is('auth/logout')) {
             return $next($request);
         }
+
         if ($this->auth->check()) {
             //認証済み
             /*
