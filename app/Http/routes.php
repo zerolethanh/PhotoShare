@@ -2,9 +2,9 @@
 
 Route::auth();
 
-//Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
+Route::get('/', ['uses' => 'htmlController@index', 'as' => 'web_home']);
 
-Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
+//Route::get('/', ['uses' => 'HomepageController@index', 'as' => 'web_home']);
 
 Route::resource('photo', 'PhotoController');
 Route::resource('event', 'EventController');
