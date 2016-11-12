@@ -20,8 +20,7 @@ class ToHomepageMiddleware
         if (Auth::check()) {
             return $next($request);
         }
-        $view = view('homepage');
-        return $view;
+        return redirect('login');
 
     }
 }

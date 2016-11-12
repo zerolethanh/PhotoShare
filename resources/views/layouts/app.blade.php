@@ -94,41 +94,41 @@
             <script type="text/javascript" src="//rws.a8.net/rakuten/ranking.js"></script>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-2 col-md-2 col-md-offset-2">
-            <!-- Rakuten Widget FROM HERE -->
-            <script type="text/javascript">rakuten_affiliateId = "0ea62065.34400275.0ea62066.204f04c0";
-                rakuten_items = "ranking";
-                rakuten_genreId = "0";
-                rakuten_recommend = "on";
-                rakuten_design = "slide";
-                rakuten_size = "120x240";
-                rakuten_target = "_blank";
-                rakuten_border = "on";
-                rakuten_auto_mode = "on";
-                rakuten_adNetworkId = "a8Net";
-                rakuten_adNetworkUrl = "http%3A%2F%2Frpx.a8.net%2Fsvt%2Fejp%3Fa8mat%3D2NT6DR%2BESUZ76%2B2HOM%2BBS629%26rakuten%3Dy%26a8ejpredirect%3D";
-                rakuten_pointbackId = "a16092429141_2NT6DR_ESUZ76_2HOM_BS629";
-                rakuten_mediaId = "20011816";</script>
-            <script type="text/javascript" src="//xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js"></script>
-            <!-- Rakuten Widget TO HERE -->
-            <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=2NT6DR+ESUZ76+2HOM+BS629" alt="">
-        </div>
-        <div class="col-sm-2 col-md-2">
-            <a href="https://px.a8.net/svt/ejp?a8mat=2NT6DR+ETGESY+50+2HCB1D" target="_blank">
-                <img border="0" width="100" height="60" alt=""
-                     src="https://www24.a8.net/svt/bgt?aid=160924815896&wid=001&eno=01&mid=s00000000018015006000&mc=1"></a>
-            <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=2NT6DR+ETGESY+50+2HCB1D" alt="">
-        </div>
-        <div class="col-md-2">
-            <script type="text/javascript">var a8 = 'a16092429141_2NT6DR_ESUZ76_2HOM_BU3I9';
-                var rankParam = 'CcL.m7dWFn1zTywkgQ-OfwdWTnqmTViVYV19iV5jkc-6dVdzic1WFyJkZcCxx';
-                var bannerType = '0';
-                var bannerKind = 'travel.fix.kind5';
-                var frame = '1';
-                var ranking = '1';</script>
-            <script type="text/javascript" src="//rws.a8.net/rakuten/ranking.js"></script>
-        </div>
+    {{--<div class="row">--}}
+        {{--<div class="col-sm-2 col-md-2 col-md-offset-2">--}}
+            {{--<!-- Rakuten Widget FROM HERE -->--}}
+            {{--<script type="text/javascript">rakuten_affiliateId = "0ea62065.34400275.0ea62066.204f04c0";--}}
+                {{--rakuten_items = "ranking";--}}
+                {{--rakuten_genreId = "0";--}}
+                {{--rakuten_recommend = "on";--}}
+                {{--rakuten_design = "slide";--}}
+                {{--rakuten_size = "120x240";--}}
+                {{--rakuten_target = "_blank";--}}
+                {{--rakuten_border = "on";--}}
+                {{--rakuten_auto_mode = "on";--}}
+                {{--rakuten_adNetworkId = "a8Net";--}}
+                {{--rakuten_adNetworkUrl = "http%3A%2F%2Frpx.a8.net%2Fsvt%2Fejp%3Fa8mat%3D2NT6DR%2BESUZ76%2B2HOM%2BBS629%26rakuten%3Dy%26a8ejpredirect%3D";--}}
+                {{--rakuten_pointbackId = "a16092429141_2NT6DR_ESUZ76_2HOM_BS629";--}}
+                {{--rakuten_mediaId = "20011816";</script>--}}
+            {{--<script type="text/javascript" src="//xml.affiliate.rakuten.co.jp/widget/js/rakuten_widget.js"></script>--}}
+            {{--<!-- Rakuten Widget TO HERE -->--}}
+            {{--<img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=2NT6DR+ESUZ76+2HOM+BS629" alt="">--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-2 col-md-2">--}}
+            {{--<a href="https://px.a8.net/svt/ejp?a8mat=2NT6DR+ETGESY+50+2HCB1D" target="_blank">--}}
+                {{--<img border="0" width="100" height="60" alt=""--}}
+                     {{--src="https://www24.a8.net/svt/bgt?aid=160924815896&wid=001&eno=01&mid=s00000000018015006000&mc=1"></a>--}}
+            {{--<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=2NT6DR+ETGESY+50+2HCB1D" alt="">--}}
+        {{--</div>--}}
+        {{--<div class="col-md-2">--}}
+            {{--<script type="text/javascript">var a8 = 'a16092429141_2NT6DR_ESUZ76_2HOM_BU3I9';--}}
+                {{--var rankParam = 'CcL.m7dWFn1zTywkgQ-OfwdWTnqmTViVYV19iV5jkc-6dVdzic1WFyJkZcCxx';--}}
+                {{--var bannerType = '0';--}}
+                {{--var bannerKind = 'travel.fix.kind5';--}}
+                {{--var frame = '1';--}}
+                {{--var ranking = '1';</script>--}}
+            {{--<script type="text/javascript" src="//rws.a8.net/rakuten/ranking.js"></script>--}}
+        {{--</div>--}}
     </div>
 </div>
 <!-- JavaScripts -->
