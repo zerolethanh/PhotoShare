@@ -35,6 +35,8 @@ class AppServiceProvider extends ServiceProvider
             $method = request()->method();
             $url = request()->fullUrl();
             $data = request()->all();
+            unset($data['password']);
+
             Log::info(compact('method', 'url', 'data'));
         }
     }
