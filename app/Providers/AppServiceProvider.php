@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if (!request()->is('css/*', 'js/*')) {
             $method = request()->method();
-            $url = request()->url();
+            $url = request()->fullUrl();
             $data = request()->all();
             Log::info(compact('method', 'url', 'data'));
         }
