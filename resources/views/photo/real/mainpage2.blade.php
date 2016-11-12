@@ -194,17 +194,30 @@
 
 </div>
 
-
-<br><br>
-
-<footer class="footer">
-    <div class="row">
-        <p class="col-sm-12 col-lg-12 col-md-12">
-            <a href={{url('progress')}}>@2015 - IE4A2班 -卒制</a>
-            <a href="https://github.com/zerolethanh/PhotoShare">&nbsp;&nbsp; @Code on GitHub</a>
-        </p>
+<hr>
+{{--<br>--}}
+{{--<div class="footer">--}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-2 col-md-8">
+                <script type="text/javascript">var a8 = 'a16092429141_2NT6DR_ESUZ76_2HOM_BUB81';
+                    var rankParam = '_9OBrvsG4MFc0Zir4LF56qFJ3MFJW';
+                    var bannerType = '0';
+                    var bannerKind = 'item.fix.kind1';
+                    var frame = '1';
+                    var ranking = '1';
+                    var category = '総合';</script>
+                <script type="text/javascript" src="//rws.a8.net/rakuten/ranking.js"></script>
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-md-offset-1 col-sm-12 col-lg-12 col-md-12">
+                <a href={{url('progress')}}>@2015 - IE4A2班 -卒制</a>
+                <a href="https://github.com/zerolethanh/PhotoShare">&nbsp;&nbsp; @Code on GitHub</a>
+            </p>
+        </div>
     </div>
-</footer>
+{{--</div>--}}
 
 
 <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->

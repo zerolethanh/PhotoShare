@@ -47,6 +47,7 @@ class AuthController extends Controller
         $this->middleware('guest');
 
         $this->mailer = $mailer;
+
     }
 
     //when login success

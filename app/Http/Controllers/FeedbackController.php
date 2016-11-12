@@ -15,6 +15,8 @@ class FeedbackController extends Controller
     {
         $feedbacks = Feedback::latest()->paginate(5);
         return view('feedback.index', compact('feedbacks'));
+
+
     }
 
     public function store(Request $request)
@@ -25,7 +27,8 @@ class FeedbackController extends Controller
             ]
         );
         $feedback = Feedback::create($request->all());
-//        return $request->all();
+
+
         return back();
     }
 }

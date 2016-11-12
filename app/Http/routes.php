@@ -54,3 +54,4 @@ Route::post('feedback', 'FeedbackController@store');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+

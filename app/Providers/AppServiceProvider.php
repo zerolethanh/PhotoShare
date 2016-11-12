@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
 //                $m->to('zero.lethanh@gmail.com');
 //            });
 //        });
+
+
     }
 
     /**
@@ -34,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+//        write_debug_backtrace(true);
     }
 }

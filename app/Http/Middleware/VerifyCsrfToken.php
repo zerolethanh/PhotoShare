@@ -18,6 +18,7 @@ class VerifyCsrfToken extends BaseVerifier
 
     public function handle($request, \Closure $next)
     {
+//        write_debug_backtrace(true);
         if (
             $request->has('mobile') || // 追加, always true token if mobile
             $this->isReading($request) ||
