@@ -5,11 +5,11 @@
 getPhotos();
 
 var getPhotosData;
-
+var gallery;
 function getPhotos(event_id, group_by) {
 
     event_id = event_id || getEventId();
-    //group_by = group_by || 'All';
+
     var group_by_params = group_by ? "?group_by=" + group_by : "";
     $.post('/events/photos/' + event_id + group_by_params)
         .success(function (data) {//return html
@@ -20,6 +20,8 @@ function getPhotos(event_id, group_by) {
 
             //$('#photos_links').html(data.html.photos_links).append(data.blueimp_gallery);
             $('#photos_links').html(data.photoHTML.links).append(data.blueimp_gallery);
+            setupBlueImp(data.photoHTML.ids);
+
 
             $('#buttons').html(data.html.buttons);
 
@@ -27,24 +29,21 @@ function getPhotos(event_id, group_by) {
             $('#other_albums').html(data.html.other_albums);
             $('#members').html('Members: ' + data.event.members);
 
-            var menuButtonHtml = "<span style='font-size: xx-small' class='text-muted'>"
-                + data.event.or_time + '</span>'
-                + " <span style='font-size: larger;font-weight: bolder'>"
-                + data.event.event_name
-                + '</span> <span class="caret"></span>';
+            var menuButtonHtml =
+                "<span style='font-size: xx-small' class='text-muted'>" + data.event.or_time + '</span>'
+                + " <span style='font-size: larger;font-weight: bolder'>" + data.event.event_name + '</span> '
+                + '<span class="caret"></span>';
             $("#eventsDropDownMenu").html(menuButtonHtml);
 
-            document.title = data.event.event_name + " - PhotoShare";
+            document.title = data.event.event_name;
             focusSelfOrSharedButton(data.event.pivot.admin);
 
             //initBlueimp();
 
-            setupBlueImp();
 
             setEventId(data.event.id);
             getComments(data.event.id);
 
-            //var targetY = $("#eventsDropDownMenu").offset().top - 10;
             $("html,body").animate({scrollTop: 0});
         })
         .fail(function () {
@@ -61,69 +60,17 @@ function setPhotoIndex($newIndex) {
 
 moment.locale('ja');
 
-function setupBlueImp() {
+function setupBlueImp(ids) {
 
-    var ids = getPhotosData.photoHTML.ids;
+    ids = ids || getPhotosData.photoHTML.ids;
 
-    //console.log(ids);
     for (var i = 0; i < ids.length; i++) {
-
-        //console.log(ids[i]);
-
-        document.getElementById(ids[i]).onclick = function (event) {
-            event = event || window.event;
-
-            var can_be_delete_trues = photos.can_be_deleted.true,
-                photo;
-
-            var target = event.target || event.srcElement,
-                link = target.src ? target.parentNode : target,
-                options = {
-                    index: link,
-                    event: event,
-                    toggleControlsOnReturn: false,
-                    continuous: false,
-                    carousel: false,
-                    onslide: function (index, slide) {
-                        $('[name="photo_description"]').fadeTo('fast', 0);
-
-                    },
-                    onslideend: function (index, slide) {
-
-                        photo = photos.all[index];
-                        //$('[name="photo_title"]').text(data.event.event_name);
-                        $('[name="photo_description"]').html(
-                            "<div style='font-size:x-small'>"
-                            + photo.title
-                            + "<br>by " + photo.user.name
-                            + " at " + moment(photo.created_at).fromNow()
-                            + "</div>"
-                        ).fadeTo('fast', 1);
-
-
-                        if (can_be_delete_trues.indexOf(photos.ids[index]) >= 0) {
-                            //delete button show
-                            //console.log('can be deleted');
-                            $('[name="photo_delete_button"]').attr('disabled', false);
-                        } else {
-                            //hide photo delete button
-                            //console.log('can not be deleted');
-                            $('[name="photo_delete_button"]').attr('disabled', true);
-                        }
-
-                        setPhotoIndex(index);
-                    }
-                },
-                links = this.getElementsByTagName('a');
-
-            //console.log(link);
-            gallery = blueimp.Gallery(links, options);
-        };
+        initBlueimp(ids[i]);
     }
 }
-function initBlueimp() {
+function initBlueimp(id) {
 
-    document.getElementById('links').onclick = function (event) {
+    document.getElementById(id /*'links'*/).onclick = function (event) {
         event = event || window.event;
 
         var can_be_delete_trues = photos.can_be_deleted.true,
@@ -149,7 +96,7 @@ function initBlueimp() {
                         "<div style='font-size:x-small'>"
                         + photo.title
                         + "<br>by " + photo.user.name
-                        + " at " + moment(photo.created_at).fromNow()
+                        + " | " + moment(photo.created_at).fromNow()
                         + "</div>"
                     ).fadeTo('fast', 1);
 
@@ -165,8 +112,17 @@ function initBlueimp() {
                     }
 
                     setPhotoIndex(index);
+                },
+                onclosed: function () {
+
+                    //if (typeof window.albumPhotosChanged !== 'undefined' && window.albumPhotosChanged) {
+                    //    getPhotos();
+                    //    window.albumPhotosChanged = false;
+                    //}
                 }
+
             },
+
             links = this.getElementsByTagName('a');
 
         //console.log(link);

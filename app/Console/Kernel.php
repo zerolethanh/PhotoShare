@@ -26,10 +26,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->exec('pm2 start iotest')
-            ->hourly()
-            ->sendOutputTo(storage_path('app/schedule.txt'));
-
-        $schedule->command('emails:send')->daily()->at('10:00');
+//        $schedule->exec('pm2 start iotest')
+//            ->hourly()
+//            ->sendOutputTo(storage_path('app/schedule.txt'));
+//
+//        $schedule->command('emails:send')->daily()->at('10:00');
     }
 }

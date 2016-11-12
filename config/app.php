@@ -1,6 +1,18 @@
 <?php
-
 return [
+
+    /*
+  |--------------------------------------------------------------------------
+  | Ap  plication Environment
+  |--------------------------------------------------------------------------
+  |
+  | This value determines the "environment" your application is currently
+  | running in. This may determine how you prefer to configure various
+  | services your application utilizes. Set this in your ".env" file.
+  |
+  */
+
+    'env' => env('APP_ENV', 'DEV'),
 
     /*
     |--------------------------------------------------------------------------
@@ -108,18 +120,19 @@ return [
     |
     */
 
+
     'providers' => [
 
         /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
+//        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
+//        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -145,6 +158,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Vinkla\Pusher\PusherServiceProvider::class,
+
+//        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -194,6 +209,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+//        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

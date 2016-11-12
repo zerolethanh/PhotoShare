@@ -40,9 +40,9 @@ var Redis = require('ioredis');
 var redis = new Redis(
     {
         port: 6379,          // Redis port
-        host: '127.0.0.1',   // Redis host
+        host: '153.120.167.173',   // Redis host
         family: 4,           // 4 (IPv4) or 6 (IPv6)
-        password: 'password',//'OYtjt7TRs72StScD2mI4Lfsl5Ce0',
+        password: 'OYtjt7TRs72StScD2mI4Lfsl5Ce0',//'OYtjt7TRs72StScD2mI4Lfsl5Ce0',
         db: 0
     }
 );
@@ -54,6 +54,7 @@ redis.psubscribe('*', function (err, count) {
 });
 //
 redis.on('pmessage', function (subscribed, channel, message) {
+
     console.log('emitting');
     console.log(channel);
 

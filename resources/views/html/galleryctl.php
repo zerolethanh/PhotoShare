@@ -9,7 +9,7 @@ $control = request()->user()->blueimp_gallery_controls ?
     ' blueimp-gallery-controls' : '';
 echo
 <<<EOT
-<div id="blueimp-gallery" class="blueimp-gallery $control">
+<div id="blueimp-gallery" class="blueimp-gallery $control"  data-hide-page-scrollbars="false">
     <div class="slides"></div>
     <h3 class="title"></h3>
     <a class="prev">‹</a>

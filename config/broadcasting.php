@@ -13,7 +13,10 @@ return [
     |
     */
 
-    'default' => 'redis',//env('BROADCAST_DRIVER', 'redis'),
+    'default' =>
+//        'log',
+        'redis',
+    ////env('BROADCAST_DRIVER', 'redis'),
 
     /*
     |--------------------------------------------------------------------------

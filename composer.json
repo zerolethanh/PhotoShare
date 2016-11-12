@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
+        "laravel/framework": "5.2.*",
         "predis/predis": "~1.0",
         "pusher/pusher-php-server":"~2.0",
         "vinkla/pusher": "^2.0",
@@ -18,7 +18,11 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "guzzlehttp/guzzle": "~5.3|~6.0",
-        "symfony/psr-http-message-bridge": "0.2"
+        "symfony/psr-http-message-bridge": "0.2",
+
+        "symfony/dom-crawler": "~3.0",
+        "symfony/css-selector": "~3.0",
+        "laravel/homestead": "^3.0"
     },
     "autoload": {
         "classmap": [

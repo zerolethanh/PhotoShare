@@ -35,6 +35,11 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next)
     {
+
+        if ($request->is('logout') || $request->is('auth/logout')) {
+            return $next($request);
+        }
+
         if ($this->auth->check()) {
             //認証済み
             /*
@@ -45,7 +50,7 @@ class RedirectIfAuthenticated
                 $user['X-CSRF-TOKEN'] = csrf_token();
                 return compact('user');
             }
-            return redirect('/event');
+            return redirect()->route('web_home');
         }
 
         //未認証, next

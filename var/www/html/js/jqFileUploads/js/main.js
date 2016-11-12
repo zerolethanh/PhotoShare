@@ -15,9 +15,6 @@ $(function () {
             {name: 'gid', value: gid},
             {name: 'event_id', value: event_id},
             {name: '_token', value: _token},
-            //{name: 'or_time', value: or_time},
-            //{name: 'event_name', value: event_name},
-            //{name: 'is_new_group', value: true},
         ];
     });
 

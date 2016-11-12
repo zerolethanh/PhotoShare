@@ -39,6 +39,8 @@ class EventController extends Controller
     protected $control;
     protected $eventGroupBy;//for $this->buttons();
 
+    protected $users;
+
     public function __construct()
     {
         parent::__construct();
@@ -48,6 +50,27 @@ class EventController extends Controller
         $this->user = request()->user();
 
         $this->control = isset(request()->user()->blueimp_gallery_controls) ? request()->user()->blueimp_gallery_controls : false;
+    }
+
+    /*
+    * route: /event
+    */
+    public function index()
+    {
+        return $this->getByself();
+    }
+
+    /*
+     * route: /events/byself
+     */
+    public function getByself()
+    {
+        $lastEvent = $this->user->allAdminEvents()->orderBy('id', 'desc')->first();
+
+        if ($lastEvent) {
+            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
+        }
+        return redirect('/photos/create');
     }
 
     /*
@@ -165,27 +188,6 @@ class EventController extends Controller
         return compact('users', 'by', 'links', 'ids', 'can_be_deleted', 'all');
     }
 
-    protected $users;
-
-//    public function photos_links()
-//    {
-//        $html = '<div id="links" class="links">';
-//
-//        foreach ($this->photos as $photo) {
-//            $id = $photo['id'];
-//            $link = "/event/{$this->event->id}/photo/{$id}";
-//
-//            $html .= "<a href='$link' title='{$photo->ori_name}'>
-//                            <img src='$link?thumb=1' class='img img-thumbnail'/>
-//                      </a>";
-//        }
-//
-//        $html .= "</div>";
-//
-//        $html .= view('html.galleryctl');
-//
-//        return $html;
-//    }
 
 
     function photoHTML()
@@ -383,6 +385,7 @@ class EventController extends Controller
             'event_id' => $event->id
         ]);
         event(new NewComment($comment, $event));
+        return compact('event', 'comment');
         return $comment;
     }
 
@@ -415,19 +418,6 @@ class EventController extends Controller
         return compact('event', 'commentsHtml');
     }
 
-
-    /*
-     * route: /events/byself
-     */
-    public function getByself()
-    {
-        $lastEvent = $this->user->allAdminEvents()->orderBy('id', 'desc')->first();
-
-        if ($lastEvent) {
-            return redirect("/event/$lastEvent->id/photo")->with(['byself' => 1, 'byshared' => 0]);
-        }
-        return redirect('/photos/create');
-    }
 
     /*
     * route: /events/byshared
@@ -642,13 +632,7 @@ class EventController extends Controller
         return compact('query', 'events');
     }
 
-    /*
-     * route: /event
-     */
-    public function index()
-    {
-        return $this->getByself();
-    }
+
 
 //    public function getPhotos(Request $request, $term, $identifier)
 //    {
@@ -715,7 +699,7 @@ class EventController extends Controller
     {
         $this->validate($request, ['event_name' => 'required']);
 
-        $search_text = trim($request->event_name);
+        $search_text = trim($request->input('event_name'));
 
         if (starts_with($search_text, '#')) {
             $tag = substr($search_text, 1);
@@ -726,9 +710,13 @@ class EventController extends Controller
             $events = $this->user->events()
                 ->where('event_name', 'like', "%{$search_text}%")->get();
         }
-        $html = view('html.eventSearchResult', compact('events', 'search_text'));
 
-        return $html;
+        if ($request->has('mobile')) {
+            return compact('events', 'search_text');
+        } else {
+            $html = view('html.eventSearchResult', compact('events', 'search_text'));
+            return $html;
+        }
     }
 
 }

@@ -35,18 +35,12 @@ function deletePhoto() {
                 $.post('/photos/delete/' + photo_id)
                     .always(function (data) {
                         gallery.close();
-                        getPhotos();
+                        //setTimeout(function () {
+                        //    getPhotos();
+                        //}, 1000);
+
                     });
-                //.success(function (data) {
-                //
-                //    //console.log(data);
-                //    if (data.deleted) {
-                //        gallery.close();
-                //        getPhotos();
-                //    } else {
-                //        alert(data.msg);
-                //    }
-                //});
+
             } else {
 
             }
