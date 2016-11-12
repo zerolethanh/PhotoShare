@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Queue;
@@ -25,7 +26,15 @@ class AppServiceProvider extends ServiceProvider
 //            });
 //        });
 
+        static::logRequestURL();
+    }
 
+    static function logRequestURL()
+    {
+        if (!request()->is('css/*', 'js/*')) {
+            $uri = request()->getUri();
+            Log::info($uri);
+        }
     }
 
     /**
