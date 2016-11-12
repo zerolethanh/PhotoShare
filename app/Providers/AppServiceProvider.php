@@ -32,8 +32,10 @@ class AppServiceProvider extends ServiceProvider
     static function logRequestURL()
     {
         if (!request()->is('css/*', 'js/*')) {
-            $uri = request()->getUri();
-            Log::info($uri);
+            $method = request()->method();
+            $url = request()->url();
+            $data = request()->all();
+            Log::info(compact('method', 'url', 'data'));
         }
     }
 
