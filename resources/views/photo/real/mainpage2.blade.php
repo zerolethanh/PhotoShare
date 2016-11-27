@@ -3,11 +3,18 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-TSGD74K');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TSGD74K');</script>
     <!-- End Google Tag Manager -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -45,8 +52,10 @@
 
 <body>
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSGD74K"
-                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSGD74K"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!--nav bar-->
 <nav class="navbar navbar-default navbar-static-top">
@@ -219,15 +228,15 @@
 <hr>
 {{--<br>--}}
 {{--<div class="footer">--}}
-    <div class="container">
+<div class="container">
 
-        <div class="row">
-            <p class="col-md-offset-1 col-sm-12 col-lg-12 col-md-12">
-                <a href={{url('progress')}}>@2015 - IE4A2班 -卒制</a>
-                <a href="https://github.com/zerolethanh/PhotoShare">&nbsp;&nbsp; @Code on GitHub</a>
-            </p>
-        </div>
+    <div class="row">
+        <p class="col-md-offset-1 col-sm-12 col-lg-12 col-md-12">
+            <a href={{url('progress')}}>@2015 - IE4A2班 -卒制</a>
+            <a href="https://github.com/zerolethanh/PhotoShare">&nbsp;&nbsp; @Code on GitHub</a>
+        </p>
     </div>
+</div>
 {{--</div>--}}
 
 
@@ -260,7 +269,7 @@ if (request()->user()->blueimp_gallery_controls) {
 
 
 <script src="/js/ajaxcombo/jquery.ajax-combobox.js"></script>
-
+<?php include_once(resource_path('views/GA/analyticstracking.php')) ?>
 </body>
 
 </html>
