@@ -10,7 +10,9 @@
         "predis/predis": "~1.0",
         "pusher/pusher-php-server":"~2.0",
         "vinkla/pusher": "^2.0",
-        "endroid/qrcode": "^1.5"
+        "endroid/qrcode": "^1.5",
+        "rezozero/slir": "2.1.*"
+
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

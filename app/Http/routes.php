@@ -55,3 +55,4 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('slir/{size}/{user_id}/{album_id}/{image_file}', 'SlirController@slirAction');
