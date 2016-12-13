@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -74,8 +75,12 @@ class PhotoController extends Controller
 
         $this->user->increment('photo_last_group_id');
 
-        if (file_exists($view = "/var/www/html/js/jqFileUploads/index.php")) {
-            return view()->file($view, ['gid' => $this->user->photo_last_group_id, 'event' => $event]);
+        $indexFiles = [public_path('/js/jqFileUploads/index.php'), '/var/www/html/js/jqFileUploads/index.php'];
+
+        foreach ($indexFiles as $file) {
+            if (file_exists($file)) {
+                return view()->file($file, ['gid' => $this->user->photo_last_group_id, 'event' => $event]);
+            }
         }
 
         return 'view not found';
@@ -400,7 +405,12 @@ class PhotoController extends Controller
     {
 //        /slir/h100/65/2/356_mori.JPG
         $slirPath = $this->slirPath($photo);
-        copy("http://153.120.167.173/slir/h200/$slirPath", $this->photoThumbFullPath($photo));
+        $baseURL = 'http://153.120.167.173';
+        if (env('APP_ENV') === 'local') {
+            $baseURL = 'http://127.0.0.1';
+        }
+        @copy("$baseURL/slir/h200/$slirPath", $this->photoThumbFullPath($photo));
+
 
 //        header("Content-Type: $photo->mime");
 //        list($width, $height) = getimagesize($filename);

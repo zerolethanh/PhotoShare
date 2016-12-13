@@ -47,6 +47,18 @@ class RouteServiceProvider extends ServiceProvider
             require app_path('Http/routes.php');
         });
 
+        $this->registerMobileRouter($router);
+
     }
 
+    public function registerMobileRouter(Router $router)
+    {
+        $router->group([
+            'prefix' => 'api', 'namespace' => $this->namespace, 'middleware' => 'api',
+        ], function ($router) {
+            require app_path('Http/mobile.php');
+        });
+
+
+    }
 }
